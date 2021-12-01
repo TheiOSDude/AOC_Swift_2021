@@ -26,10 +26,39 @@ func howManyIncreases(input: [Int]) -> Int {
 
 howManyIncreases(input: input)
 
+input.dropFirst(3)
 
 func slidingWindow(input: [Int]) -> Int {
+   
+    // this is sick TBF
+    // conjoin 2 arrays as a tuple.
     
-    return zip(input, input.dropFirst(3)).lazy.filter { $0 < $1 }.count
+    // then filter the two by which is larger
+    // return that as a count
+    
+    // learning points: 1 ZIP, never used before
+    // 2 filter tuples based on 1 being greater than the rest.
+    // 2.1 var a: Zip2Sequence<[Int], Array<Int>.SubSequence> is the actual type we filter on (so int vs int)
+    
+    let a = zip(input, input.dropFirst(3))
+    
+    return a.filter { $0 < $1 }.count
 }
 
 slidingWindow(input: input)
+
+
+// Play
+var numba = [1,2,3]
+var numbb = ["Lee", "David", "Zoe"]
+
+var array = [([Int], [Int])]()
+array.append(([1,2,3], [4,5,6]))
+
+let b = zip(numba, numbb)
+
+for (itema, itemb) in b {
+    print("\(itema) : \(itemb)")
+}
+
+//array.filter { $0 < $1 }
